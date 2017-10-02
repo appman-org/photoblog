@@ -1,0 +1,29 @@
+2016-01-12T00:00:00
+true
+blogpostid1
+Blog post title 1
+10001
+Some text for the blog post!
+
+Another line of text.
+#break
+blogpostid2
+Blog post title 2
+10001
+Some text for the blog post!
+
+Another line of text.
+#break
+2020-07-28T10:00:00
+true
+blogPostId3
+Blog Post of the future
+10001
+So futuristic, wow!
+#break
+2016-06-22T10:00:00
+false
+blogPostId4
+Unpublished blog post
+10001
+So invisible, wow!

@@ -1,0 +1,1 @@
+testalbum0001;2016-05-28T10:00:00;true;images/testalbum0001;Album 01

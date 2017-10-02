@@ -1,0 +1,42 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+amazon:
+  dynamodb:
+    endpoint: https://dynamodb.eu-central-1.amazonaws.com # test
+  aws:
+    accesskey: YOUR_ACCESS_KEY
+    secretkey: YOUR_SECRET_KEY
+
+website:
+  runLocal: false
+  baseUrl: http://www.yourwebsite.something
+  baseTitle: YourWebsiteTitle
+  description: Your website description
+  analyticsTrackingId: yourAnalyticsTrackingId
+  environmentType: TEST
+  rssItems: 10
+  imageImportFolder: C://folderWithImages
+  disqusAcount: yourdisqusaccount
+  googleMapsApiKey: yourgooglemapsapikey
+
+  content:
+    local: #TODO: relative links, should point to the files in resources/static folders
+      albumList: C:\yourfolder\album_list.txt
+      photoList: C:\yourfolder\photo_list.txt
+      blogList: C:\yourfolder\text_blogs.txt
+      aboutPage: C:\yourfolder\aboutPageContent.txt
+    remote:
+      albumList: http://www.yourwebsite.something/album_list.txt
+      photoList: http://www.yourwebsite.something/photo_list.txt
+      blogList: http://www.yourwebsite.something/text_blogs.txt
+      aboutPage: http://www.yourwebsite.something/aboutPageContent.txt
+      imageUrlPrefix: http://www.yourwebsite.something/images/

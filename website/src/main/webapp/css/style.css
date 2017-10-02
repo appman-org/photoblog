@@ -1,0 +1,82 @@
+
+/* Used in the photo album to put the thumbnails in a square container and center them */
+.albumthumbnail {
+  display: block;
+  padding-bottom: 100%;
+  position: relative;
+}
+.albumthumbnail > .img-responsive {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+
+/* Used for the squared thumbnails on the homepage */
+.centered-image {
+  width: 100%;
+  padding-top: 100%;
+  background-position: center center;
+  /* optional */
+
+}
+.centered-image.cropped {
+  background-size: cover;
+}
+
+.centered-image img {
+  display: none;
+}
+
+/* Google map for images */
+
+.info {
+}
+
+.info img {
+    border: 0;
+}
+
+.info-body {
+    height: 200px;
+    line-height: 200px;
+    margin: 2px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.info-img {
+    margin: 0 4px;
+    height: 220px;
+    width: 200px;
+}
+
+.map-on-album-page .iframe-container {
+    padding-bottom: 40%;
+}
+
+.map-on-map-page .iframe-container {
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+
+.iframe-container{
+    position: relative;
+    width: 100%;
+}
+.iframe-container > *{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
