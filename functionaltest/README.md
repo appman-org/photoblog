@@ -9,6 +9,7 @@ Make sure the dependent project webdriverbase is installed as described in the p
 ### Suggested plugins for Intellij
 
 Via File > Settings > Plugins, add the following plugins:
+
 1. Gherkin
 2. Cucumber for Java
 
