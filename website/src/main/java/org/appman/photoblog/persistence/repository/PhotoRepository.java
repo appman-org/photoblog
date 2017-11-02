@@ -19,8 +19,9 @@ import java.util.List;
 @EnableScanCount
 public interface PhotoRepository extends PagingAndSortingRepository<Photo, String> {
 
-    public List<Photo> findByAlbumId(@Param("albumId") String albumId);
+    List<Photo> findByAlbumId(@Param("albumId") String albumId);
 
-    public Slice<Photo> findByAlbumId(@Param("albumId") String albumId, Pageable pageable);
+    Slice<Photo> findByAlbumId(@Param("albumId") String albumId, Pageable pageable);
 
+    List<Photo> findByAlbumIdIn(@Param("albumId") List<String> albumIdList);
 }

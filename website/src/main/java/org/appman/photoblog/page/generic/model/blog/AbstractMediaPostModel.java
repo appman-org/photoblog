@@ -17,8 +17,6 @@ public abstract class AbstractMediaPostModel extends AbstractPublishableObjectMo
         super(id, publishDate, visible);
     }
 
-
     public abstract String getTitle();
-
 
 }

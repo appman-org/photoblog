@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -209,5 +210,10 @@ public class SimpleAlbumService extends AbstractApplicationService implements Al
     @Override
     public List<AlbumModel> getAlbumModelList(Pageable pageable) {
         throw new UnsupportedOperationException("Not supported");
+    }
+
+    @Override
+    public List<PhotoModel> getPhotoModelListForAlbumIds(List<String> albumIds) {
+        return null;
     }
 }

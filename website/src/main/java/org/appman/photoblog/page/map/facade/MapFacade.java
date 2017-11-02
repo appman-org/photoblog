@@ -9,5 +9,5 @@ import java.util.Optional;
  */
 public interface MapFacade {
 
-    Optional<MapPageViewDto> getMapPageViewDto();
+    public Optional<MapPageViewDto> getMapPageViewDto(Integer year);
 }

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.appman.photoblog.page.generic.util.MediaPostListUtil.getPagedMediaPostModels;
+import static org.appman.photoblog.page.generic.util.PublishableObjectUtil.getPagedPublishableModels;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class MediaPostListUtilTest{
+public class PublishableObjectUtilTest {
 
     private List<AbstractMediaPostModel> generateMediaPostModelList(int length){
         List<AbstractMediaPostModel> blogPostModels = new ArrayList<>();
@@ -39,25 +39,25 @@ public class MediaPostListUtilTest{
     }
 
     @Test
-    public void testGetPagedMediaPostModelsEmptyList(){
+    public void testGetPagedPublishableModelsEmptyList(){
         // Setup
         List<AbstractMediaPostModel> blogPostModels = generateMediaPostModelList(0);
 
         // Action
-        List<AbstractMediaPostModel> result = getPagedMediaPostModels(blogPostModels, 1, 1);
+        List<AbstractMediaPostModel> result = getPagedPublishableModels(blogPostModels, 1, 1);
 
         // Assert
         assertEquals(0, result.size());
     }
 
     @Test
-    public void testGetPagedMediaPostModelsLessThenBlogPerPage(){
+    public void testGetPagedPublishableModelsLessThenBlogPerPage(){
         // Setup
         List<AbstractMediaPostModel> blogPostModels = generateMediaPostModelList(50);
 
         // Action
-        List<AbstractMediaPostModel> result1 = getPagedMediaPostModels(blogPostModels, 100, 1);
-        List<AbstractMediaPostModel> result2 = getPagedMediaPostModels(blogPostModels, 100, 2);
+        List<AbstractMediaPostModel> result1 = getPagedPublishableModels(blogPostModels, 100, 1);
+        List<AbstractMediaPostModel> result2 = getPagedPublishableModels(blogPostModels, 100, 2);
 
         // Assert
         assertEquals(50, result1.size());
@@ -66,13 +66,13 @@ public class MediaPostListUtilTest{
     }
 
     @Test
-    public void testGetPagedMediaPostModelsEqualToBlogPerPage(){
+    public void testGetPagedPublishableModelsEqualToBlogPerPage(){
         // Setup
         List<AbstractMediaPostModel> blogPostModels = generateMediaPostModelList(3);
 
         // Action
-        List<AbstractMediaPostModel> result1 = getPagedMediaPostModels(blogPostModels, 3, 1);
-        List<AbstractMediaPostModel> result2 = getPagedMediaPostModels(blogPostModels, 3, 2);
+        List<AbstractMediaPostModel> result1 = getPagedPublishableModels(blogPostModels, 3, 1);
+        List<AbstractMediaPostModel> result2 = getPagedPublishableModels(blogPostModels, 3, 2);
 
 
         // Assert
@@ -82,13 +82,13 @@ public class MediaPostListUtilTest{
     }
 
     @Test
-    public void testGetPagedMediaPostModelsMoreToBlogPerPage(){
+    public void testGetPagedPublishableModelsMoreToBlogPerPage(){
         // Setup
         List<AbstractMediaPostModel> blogPostModels = generateMediaPostModelList(8);
 
         // Action
-        List<AbstractMediaPostModel> result1 = getPagedMediaPostModels(blogPostModels, 3, 1);
-        List<AbstractMediaPostModel> result2 = getPagedMediaPostModels(blogPostModels, 3, 3);
+        List<AbstractMediaPostModel> result1 = getPagedPublishableModels(blogPostModels, 3, 1);
+        List<AbstractMediaPostModel> result2 = getPagedPublishableModels(blogPostModels, 3, 3);
 
         // Assert
         assertEquals(3, result1.size());

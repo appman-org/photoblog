@@ -83,5 +83,8 @@ public class AlbumServiceMock implements AlbumService{
         return null;
     }
 
-
+    @Override
+    public List<PhotoModel> getPhotoModelListForAlbumIds(List<String> albumIds) {
+        return null;
+    }
 }

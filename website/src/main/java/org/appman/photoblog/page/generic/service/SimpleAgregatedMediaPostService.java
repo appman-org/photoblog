@@ -1,7 +1,7 @@
 package org.appman.photoblog.page.generic.service;
 
 import org.appman.photoblog.page.generic.model.blog.AbstractMediaPostModel;
-import org.appman.photoblog.page.generic.util.MediaPostListUtil;
+import org.appman.photoblog.page.generic.util.PublishableObjectUtil;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -37,7 +37,7 @@ public class SimpleAgregatedMediaPostService extends AbstractSimpleMediaPostServ
         blogPostModels.addAll(albumMediaPostService.getMediaPostModelList());
         blogPostModels.addAll(blogPostService.getMediaPostModelList());
 
-        return MediaPostListUtil.getSortedAndPublishedMediaPostModels(blogPostModels);
+        return PublishableObjectUtil.getSortedAndPublishedModels(blogPostModels);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class SimpleAgregatedMediaPostService extends AbstractSimpleMediaPostServ
         blogPostModels.addAll(albumMediaPostService.getMediaPostModelList(limit));
         blogPostModels.addAll(blogPostService.getMediaPostModelList(limit));
 
-        return MediaPostListUtil.getSortedAndPublishedMediaPostModels(blogPostModels)
+        return PublishableObjectUtil.getSortedAndPublishedModels(blogPostModels)
                 .stream()
                 .limit((long)limit)
                 .collect(Collectors.toList());

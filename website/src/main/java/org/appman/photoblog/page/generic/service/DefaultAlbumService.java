@@ -4,14 +4,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.appman.photoblog.core.service.AbstractApplicationService;
 import org.appman.photoblog.page.generic.model.AlbumModel;
 import org.appman.photoblog.page.generic.model.PhotoModel;
+import org.appman.photoblog.persistence.model.Photo;
 import org.appman.photoblog.persistence.repository.AlbumRepository;
 import org.appman.photoblog.persistence.repository.PhotoRepository;
+import org.appman.photoblog.persistence.util.DomainConverterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
@@ -60,7 +64,7 @@ public class DefaultAlbumService extends AbstractApplicationService implements A
             return photoRepository.findByAlbumId(albumId, new PageRequest(0, count))
                     .getContent()
                     .stream()
-                    .map(photo -> persistentToDomain(photo))
+                    .map(DomainConverterUtil::persistentToDomain)
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .sorted() // Keep in mind that we already get a paged result from unsorted source.
@@ -74,22 +78,28 @@ public class DefaultAlbumService extends AbstractApplicationService implements A
 
     @Override
     public List<PhotoModel> getPhotoModelListForAlbum(String albumId) {
+        return getPhotoModelListForAlbumIds(Arrays.asList(albumId));
+    }
+
+    @Override
+    public List<PhotoModel> getPhotoModelListForAlbumIds(List<String> albumIds) {
+
         try {
+
             return photoRepository
-                    .findByAlbumId(albumId)
+                    .findByAlbumIdIn(albumIds)
                     .stream()
-                    .map(photo -> persistentToDomain(photo))
+                    .map(DomainConverterUtil::persistentToDomain)
                     .filter(Optional::isPresent)
                     .map(Optional::get)
                     .sorted()
                     .collect(toList());
         } catch (RuntimeException e){
-            log.error("Error getting list of PhotoModels for albumId " + albumId);
+            log.error("Error getting list of PhotoModels for albumIds " + albumIds);
             log.error(e.toString());
         }
         return new ArrayList<PhotoModel>();
     }
-
 
     @Override
     public List<PhotoModel> getAllPhotoModelList() {

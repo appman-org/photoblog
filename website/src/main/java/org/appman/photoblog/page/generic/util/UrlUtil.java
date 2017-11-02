@@ -36,4 +36,10 @@ final public class UrlUtil {
     }
 
     public static String rssFeedUrl() { return "/feed"; }
+
+    public static String mapPageUrl(){ return "/map";}
+
+    public static String mapForYearPageUrl(int year) {
+        return mapPageUrl() + "/" + Integer.toString(year);
+    }
 }

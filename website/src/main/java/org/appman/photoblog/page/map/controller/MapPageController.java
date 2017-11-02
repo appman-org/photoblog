@@ -22,7 +22,16 @@ public class MapPageController extends AbstractPageController {
 
     @RequestMapping("/map")
     public String index(Model model) throws PageNotFoundException {
-        MapPageViewDto mapPageViewDto= mapFacade.getMapPageViewDto()
+        MapPageViewDto mapPageViewDto= mapFacade.getMapPageViewDto(null)
+                .orElseThrow(() -> new PageNotFoundException("Error while opening Map page"));
+        return openMasterPage(model, mapPageViewDto);
+    }
+
+    @RequestMapping("/map/{year}")
+    public String yearMap(
+            @PathVariable int year
+            ,Model model) throws PageNotFoundException {
+        MapPageViewDto mapPageViewDto= mapFacade.getMapPageViewDto(year)
                 .orElseThrow(() -> new PageNotFoundException("Error while opening Map page"));
         return openMasterPage(model, mapPageViewDto);
     }

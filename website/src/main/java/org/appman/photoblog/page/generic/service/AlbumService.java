@@ -29,4 +29,6 @@ public interface AlbumService {
 
     public List<AlbumModel> getAlbumModelList(Pageable pageable); // not used yet
 
+    public List<PhotoModel> getPhotoModelListForAlbumIds(List<String> albumIds);
+
 }

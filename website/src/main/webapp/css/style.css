@@ -61,7 +61,7 @@
 }
 
 .map-on-map-page .iframe-container {
-    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+    padding-bottom: 55%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
 }
 
 .iframe-container{
